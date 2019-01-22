@@ -1,0 +1,63 @@
+<h1 class="text-center p-3 mt-3 text-white" style="font-family: 'Frijole', cursive; font-size: 50px; color: white;
+  text-shadow: 6px 6px 6px #000000;">Eat-a-burger</h1>
+
+<div class="container mx-auto" style="width: 900px; height: 400px;">
+
+    <div class="float-left p-3 m-2" id="burgersToDevour" style="width: 400px; height: 400px; color: white;
+  text-shadow: 2px 2px 4px #000000;">
+        <h2 class="text-center text-white" style="font-family: 'Frijole', cursive; font-size: 25px">Burgers to
+            eat</h2>
+
+        <hr class="bg-white">
+
+        <p>
+            {{#each burgers}} {{#unless this.devoured}}
+            <li class="list-unstyled ml-3 mt-1 text-white text-left" style="font-size: 20px">
+                {{this.id}}. {{this.burger_name}}
+                <form action='/{{this.id}}?_method=PUT' method='POST' class="d-inline-block align-middle float-right">
+                    {{!-- <input type='hidden' name='devoured' value='false'> --}}
+                    <input class='devour' type='image' src='./../public/assets/images/Devour.jpg' style="height: 20px;"></input>
+                </form>
+            </li>
+            {{/unless}} {{/each}}
+        </p>
+ 
+    </div>
+
+    <div class="float-left p-3 m-2" id="burgersDevoured" style="width: 400px; height: 400px; color: white;
+  text-shadow: 2px 2px 4px #000000;">
+        <h2 class="text-center text-white" style="font-family: 'Frijole', cursive; font-size: 25px">Burgers
+            devoured</h2>
+
+        <hr class="bg-white">
+
+        <p>
+            {{#each burgers}} {{#if this.devoured}}
+            <li class="list-unstyled ml-3 text-left text-muted" style="font-size: 20px">
+                {{this.id}}. {{this.burger_name}}
+            </li>
+            {{/if}} {{/each}}
+        </p>
+    </div>
+</div>
+
+
+<div class="container mt-3 pt-3">
+    <div class="container" id="addBurger">
+        <form class="burgerUpdateForm" action="/" method="POST">
+            <div class="ml-5 mt-5 pt-5 mx-auto" style="width: 50%; font-family: 'Helvetica'; font-size: 2rem;">
+                <input class="container text-center" type="text" name="addBurger" placeholder="Add burger!  Press enter.">
+                {{!-- <input type="submit" value="Submit"> --}}
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+</div>
