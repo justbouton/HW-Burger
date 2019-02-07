@@ -5,7 +5,7 @@ CREATE database burgersDB;
 USE burgersDB;
 
 -- CREATE TABLE id, burger_name, devoured, primary key (id)
-CREATE table burgers
+CREATE table burger
 (
     id int NOT NULL AUTO_INCREMENT,
     burger_name VARCHAR(255) NOT NULL,

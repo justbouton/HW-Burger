@@ -1,10 +1,10 @@
 <h1 class="text-center p-3 mt-3 text-white" style="font-family: 'Frijole', cursive; font-size: 50px; color: white;
   text-shadow: 6px 6px 6px #000000;">Eat-a-burger</h1>
 
-<div class="container mx-auto" style="width: 900px; height: 400px;">
+<div class="container mx-auto" style="width: 900px; height: 500px;">
 
-    <div class="float-left p-3 m-2" id="burgersToDevour" style="width: 400px; height: 400px; color: white;
-  text-shadow: 2px 2px 4px #000000;">
+    <div class="float-left p-3 m-2" id="burgersToDevour" style="width: 400px; height: 500px; color: white;
+  text-shadow: 2px 2px 4px #000000; overflow: scroll;">
         <h2 class="text-center text-white" style="font-family: 'Frijole', cursive; font-size: 25px">Burgers to
             eat</h2>
 
@@ -14,9 +14,8 @@
             {{#each burgers}} {{#unless this.devoured}}
             <li class="list-unstyled ml-3 mt-1 text-white text-left" style="font-size: 20px">
                 {{this.id}}. {{this.burger_name}}
-                <form action='/{{this.id}}?_method=PUT' method='POST' class="d-inline-block align-middle float-right">
-                    {{!-- <input type='hidden' name='devoured' value='false'> --}}
-                    <input class='devour' type='image' src='./../public/assets/images/Devour.jpg' style="height: 20px;"></input>
+                <form class="devour devoured-inline-block align-middle float-right">
+                    <input class='burger_id' type="image" src='/assets/images/Devour.jpg' style="height: 20px;" type='text' value={{this.id}}>
                 </form>
             </li>
             {{/unless}} {{/each}}
@@ -24,8 +23,8 @@
  
     </div>
 
-    <div class="float-left p-3 m-2" id="burgersDevoured" style="width: 400px; height: 400px; color: white;
-  text-shadow: 2px 2px 4px #000000;">
+    <div class="float-left p-3 m-2" id="burgersDevoured" style="width: 400px; height: 500px; color: white;
+  text-shadow: 2px 2px 4px #000000; overflow: scroll;">
         <h2 class="text-center text-white" style="font-family: 'Frijole', cursive; font-size: 25px">Burgers
             devoured</h2>
 
@@ -44,9 +43,9 @@
 
 <div class="container mt-3 pt-3">
     <div class="container" id="addBurger">
-        <form class="burgerUpdateForm" action="/" method="POST">
+        <form class="burgerUpdateForm" action="/burgers/create" method="POST">
             <div class="ml-5 mt-5 pt-5 mx-auto" style="width: 50%; font-family: 'Helvetica'; font-size: 2rem;">
-                <input class="container text-center" type="text" name="addBurger" placeholder="Add burger!  Press enter.">
+                <input class="container text-center" type="text" name="burger_name" placeholder="Add burger!  Press enter.">
                 {{!-- <input type="submit" value="Submit"> --}}
             </div>
         </form>
